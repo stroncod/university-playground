@@ -1,0 +1,7 @@
+*	va	1	2
+a	b	c	d
+b	b	c	d
+c	e	e	f
+d	e	e	g
+e	-	-	g
+f	a	a	-
