@@ -22,10 +22,10 @@ void AFnD::setInicioyFinal(char i, char f){
 }
 
 int AFnD::size_alphabet(){
-	return fil-1;
+	return col;
 }
 int AFnD::size_states(){
-	return col-1;
+	return fil;
 }
 char** AFnD::transicion(){
 	return matrix;

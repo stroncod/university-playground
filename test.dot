@@ -1,0 +1,9 @@
+digraph Test{
+	a -> b [label="va"];
+	a -> c;
+	a -> d;
+	b -> b;
+	b->c;
+}
+
+/*dot -Tpng -O test.dot*/
