@@ -1,22 +1,20 @@
-#include "Teo_F.h"
-#include "AFnD.h"
-#include <stack>
-#include <iostream>
-#include <fstream>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-using namespace std;
-
-AFnD generarAFnD(string nombre){
+#include <iomanip>
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <algorithm>
+#include <stack>
+lemaArden(/*char ** matrix, char estado final*/){
+	char estado_final= 'g';
 	string line;
 	char * token;
 	char * copy;
 	int col = 0, filas = 0, a=0, b=0;
-	AFnD afnd;
 
-	ifstream myfile (nombre);
+	ifstream myfile ("test.txt");
 	if (myfile.is_open())
 	{
 		while( getline(myfile, line) )
@@ -39,7 +37,6 @@ AFnD generarAFnD(string nombre){
 		myfile.close();
 	}
 	col = col/filas;
-	afnd.setDimension(col,filas);
 
 	char ** matrix;
 	matrix = (char**) calloc(filas, sizeof(char*));
@@ -50,7 +47,7 @@ AFnD generarAFnD(string nombre){
 
 
 
-	ifstream myfile2 (nombre);
+	ifstream myfile2 ("test.txt");
 	if (myfile2.is_open())
 	{
 
@@ -76,11 +73,9 @@ AFnD generarAFnD(string nombre){
 		myfile.close();
 	}
 
-	afnd.setTransicion(matrix);
-
 	char * a_estados = (char*)malloc(filas);
 	char * a_alfabeto = (char*)malloc(col);
-	
+	int aux_i;
 	for (int i = 0; i < filas; ++i)
 	{
 		a_estados[i] = matrix[i][0];
@@ -90,42 +85,13 @@ AFnD generarAFnD(string nombre){
 	{
 		a_alfabeto[i] = matrix[0][i];
 	}
-	afnd.setAlfabeto(a_alfabeto);
-	afnd.setEstados(a_estados);
-	cout<<"Su AFnD ha sido generado con exito" <<endl;
-
-	return afnd;
-}
-
-char* clausuraEpsilon(AFnD afnd, char estado, std::stack <char> pila){
-	
-	int aux_es;
-	int aux_al;
-	char* conjunto = (char*)malloc(afnd.size_states());
-	int j=0;
-	char aux=estado;
-	if ((pila.top() == aux) || ('-'== aux))
-	{	
-		while(!pila.empty())
+	for (int i = 0; i < col; ++i)
+	{
+		for (int j = 0; j < filas; ++i)
 		{
-			conjunto[j]=pila.top();
-			pila.pop();
-			j++;
+			cout<<matrix[0][j]"="matrix[i][0]
 		}
-		return conjunto;
-		
-	}else{
-		pila.push(estado);
-		for (int i = 0; i < afnd.size_states(); ++i)
-		{
-			if(estado == afnd.states()[i])
-				aux_es=i;
-		}
-		for (int k = 0; k < afnd.size_alphabet(); ++k)
-		{
-			if('v'==afnd.alphabet()[k])
-				aux_al=k;
-		}
-		return clausuraEpsilon(afnd,afnd.transicion()[aux_es][aux_al],pila);
 	}
-} 
+
+
+}

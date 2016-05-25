@@ -1,6 +1,6 @@
 CC=g++
 all: main.o Teo_F.o AFnD.o
-	$(CC) main.o Teo_F.o AFnD.o -o program
+	$(CC) main.o Teo_F.o AFnD.o -o program 
 
 main.o: main.cpp
 	$(CC) -c main.cpp
