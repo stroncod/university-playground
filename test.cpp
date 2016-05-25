@@ -7,7 +7,11 @@
 #include <vector>
 #include <algorithm>
 #include <stack>
-lemaArden(/*char ** matrix, char estado final*/){
+
+using namespace std;
+
+int main(int argc, char const *argv[])
+{
 	char estado_final= 'g';
 	string line;
 	char * token;
@@ -85,13 +89,25 @@ lemaArden(/*char ** matrix, char estado final*/){
 	{
 		a_alfabeto[i] = matrix[0][i];
 	}
-	for (int i = 0; i < col; ++i)
+	for (int i = 0; i < filas; ++i)
 	{
-		for (int j = 0; j < filas; ++i)
+		if (a_estados[i]==estado_final)
 		{
-			cout<<matrix[0][j]"="matrix[i][0]
+			aux_i=i;
 		}
 	}
-
-
+	for (int i = 0; i < filas; ++i)
+	{
+			if (i==aux_i)
+			{
+				cout<<i<<"="<<a_alfabeto[1]<<matrix[1][i]<<"+"<<a_alfabeto[2]<<matrix[2][i]<<"+ E"<<endl;
+			}else{
+			cout<<i<<"="<<a_alfabeto[1]<<matrix[1][i]<<"+"<<a_alfabeto[2]<<matrix[2][i]<<endl;
+		}
+	}
+	return 0;
 }
+	
+
+
+

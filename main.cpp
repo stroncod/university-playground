@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+<<<<<<< HEAD
+=======
+#include <string>
+>>>>>>> jbranch1.1
 #include <iomanip>
 #include <iostream>
 #include <fstream>
@@ -9,6 +13,7 @@
 #include <stack>
 #include "AFnD.h"
 #include "Teo_F.h"
+#include "TransicionesEP.h"
 
 using namespace std;
 
@@ -25,6 +30,7 @@ int main(int argc, char const *argv[])
 	cin>>estado_inicial;
 	cin>>estado_final;
 	afnd = generarAFnD("funcion_transicion.txt");
+<<<<<<< HEAD
 	afnd.setInicioyFinal(estado_inicial,estado_final);
 
 	char* weaita;
@@ -36,6 +42,29 @@ int main(int argc, char const *argv[])
 	}
 	cout<<endl;
 
+=======
+	for (int i = 0; i < afnd.size_states(); ++i)
+	{
+		for (int j = 0; j < afnd.size_alphabet(); ++j)
+		{
+			cout << afnd.transicion()[i][j] << " ";
+		}
+
+		cout<<endl;
+	}
+
+
+	char conjunto[] = "ce";
+	TransicionesEP tep;
+
+
+	tep = transicionEpsilon(conjunto, afnd);
+
+
+
+	cout<<tep.getTransA()<<endl;
+	cout<<tep.getTransB()<<endl;	
+>>>>>>> jbranch1.1
 	
 	return 0;
 }

@@ -1,6 +1,11 @@
 #include "Teo_F.h"
 #include "AFnD.h"
+<<<<<<< HEAD
 #include <stack>
+=======
+#include "TransicionesEP.h"
+#include <array>
+>>>>>>> jbranch1.1
 #include <iostream>
 #include <fstream>
 #include <stdio.h>
@@ -97,6 +102,7 @@ AFnD generarAFnD(string nombre){
 	return afnd;
 }
 
+<<<<<<< HEAD
 char* clausuraEpsilon(AFnD afnd, char estado, std::stack <char> pila){
 	
 	int aux_es;
@@ -129,3 +135,42 @@ char* clausuraEpsilon(AFnD afnd, char estado, std::stack <char> pila){
 		return clausuraEpsilon(afnd,afnd.transicion()[aux_es][aux_al],pila);
 	}
 } 
+=======
+TransicionesEP transicionEpsilon(char* conjunto, AFnD afnd)
+{
+	TransicionesEP tep = TransicionesEP();
+	char* transA = (char*)malloc(afnd.size_alphabet());
+	char* transB = (char*)malloc(afnd.size_alphabet());
+	char** matrix = afnd.transicion();
+	int contA = 0, contB = 0;
+	for (int i = 0; i < strlen(conjunto); ++i)
+	{
+		for (int j = 1; j < afnd.size_states(); ++j)
+		{
+			if (conjunto[i] == matrix[j][0])
+			{
+				if (transA[contA-1] != matrix[j][2] && matrix[j][2] != '-')
+				{
+					transA[contA] = matrix[j][2];
+					contA++;
+				}
+
+				if (transB[contB-1] != matrix[j][3] && matrix[j][2] != '-')
+				{
+					transB[contB] = matrix[j][3];
+					contB++;
+				}
+				
+	
+			}
+		}
+	}
+
+	tep.setTransA(transA, contA);
+	tep.setTransB(transB, contB);
+
+	return tep;
+
+
+}
+>>>>>>> jbranch1.1
