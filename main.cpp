@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string>
+#include <string.h>
 #include <iomanip>
 #include <iostream>
 #include <fstream>
@@ -16,16 +16,15 @@ using namespace std;
 int main(int argc, char const *argv[])
 {
 	AFnD::AFnD afnd;
+	char estado_inicial;
+	char estado_final;
+	cout<<"Ingrese estado inicial"<<endl;
+	cin>>estado_inicial>>estado_final;
+	afnd.setInicioyFinal(estado_inicial,estado_final);
 	afnd = generarAFnD("funcion_transicion.txt");
-	for (int i = 0; i < afnd.size_alphabet(); ++i)
-	{
-		for (int j = 0; j < afnd.size_states(); ++j)
-		{
-			cout << afnd.transicion()[i][j] << " ";
-		}
 
-		cout<<endl;
-	}	
+	
+
 	
 	return 0;
 }

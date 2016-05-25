@@ -1,5 +1,0 @@
-Hola, testing...
-1
-2
-3
-printf("Sergio chupa el manguako\n");
