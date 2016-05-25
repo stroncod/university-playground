@@ -18,10 +18,10 @@ void AFnD::setEstados(char* est){
 }
 
 int AFnD::size_alphabet(){
-	return fil-1;
+	return col;
 }
 int AFnD::size_states(){
-	return col-1;
+	return fil;
 }
 char** AFnD::transicion(){
 	return matrix;

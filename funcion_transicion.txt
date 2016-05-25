@@ -1,6 +1,6 @@
 *	va	1	2
 a	b	c	d
-b	b	c	d
+b	b	c	e
 c	e	e	f
 d	e	e	f
 e	-	-	f
