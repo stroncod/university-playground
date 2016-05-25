@@ -1,11 +1,8 @@
 #include "Teo_F.h"
 #include "AFnD.h"
-<<<<<<< HEAD
 #include <stack>
-=======
 #include "TransicionesEP.h"
 #include <array>
->>>>>>> jbranch1.1
 #include <iostream>
 #include <fstream>
 #include <stdio.h>
@@ -102,7 +99,6 @@ AFnD generarAFnD(string nombre){
 	return afnd;
 }
 
-<<<<<<< HEAD
 char* clausuraEpsilon(AFnD afnd, char estado, std::stack <char> pila){
 	
 	int aux_es;
@@ -135,7 +131,7 @@ char* clausuraEpsilon(AFnD afnd, char estado, std::stack <char> pila){
 		return clausuraEpsilon(afnd,afnd.transicion()[aux_es][aux_al],pila);
 	}
 } 
-=======
+
 TransicionesEP transicionEpsilon(char* conjunto, AFnD afnd)
 {
 	TransicionesEP tep = TransicionesEP();
@@ -173,4 +169,3 @@ TransicionesEP transicionEpsilon(char* conjunto, AFnD afnd)
 
 
 }
->>>>>>> jbranch1.1
