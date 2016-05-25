@@ -1,11 +1,11 @@
 #include "Teo_F.h"
 #include "AFnD.h"
-#include <array>
+#include <stack>
 #include <iostream>
 #include <fstream>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string>
+#include <string.h>
 
 using namespace std;
 
@@ -95,3 +95,28 @@ AFnD generarAFnD(string nombre){
 
 	return afnd;
 }
+
+/*char* clausuraEpsilon(AFnD afnd, char estado){
+	int aux_es;
+	int aux_al;
+	stack <char> pila;
+	if (estado != pila.top() || strcmp('-',estado)!=0)
+	{
+		
+	}
+	pila.push(estado);
+	for (int i = 0; i < afnd.size_states(); ++i)
+	{
+		if(strcmp(estado,afnd.states()[i])!=0)
+			aux_es=i;
+	}
+	for (int i = 0; i < afnd.size_alphabet(); ++i)
+	{
+		if(strcmp('v',afnd.alphabet()[i]))
+			aux_al=i;
+	}
+	pila.push(afnd.transicion()[aux_es][aux_al]);
+	clausuraEpsilon()
+
+
+}*/
