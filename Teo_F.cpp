@@ -1,5 +1,6 @@
 #include "Teo_F.h"
 #include "AFnD.h"
+#include "AFD.h"
 #include <stack>
 #include "TransicionesEP.h"
 #include <array>
@@ -8,6 +9,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <string>
+#include <queue>
 
 using namespace std;
 
@@ -167,5 +170,70 @@ TransicionesEP transicionEpsilon(char* conjunto, AFnD afnd)
 
 	return tep;
 
+}
+char* conjunto_cE(AFnD afnd, char* estados, std::stack <char> pila ){
+	char* tmp;
+	char* aux;
+	int i=0;
+	for (int i = 0; i < sizeof(estados); ++i)
+	{
+		tmp=clausuraEpsilon(afnd,estados[i],pila);
+		i+=strlen(tmp); 
+	}
+	char* final= (char*)malloc(i);
+	free(tmp);
+	aux=clausuraEpsilon(afnd,estados[0],pila);
+	for (int i = 1; i < strlen(final); ++i)
+	{
+		tmp=clausuraEpsilon(afnd,estados[i],pila);
+		strcpy(final,tmp);
+		strcat(final,aux);
+		aux=tmp;
+	}
+	int largo= strlen(final);
+	for (int i = 0; i < largo; ++i)
+	{
+		for (int j = i; j < largo;)
+		{
+			if(final[i]==final[j]){
+				final[j]=final[--largo];
+			}else{
+				j++;
+			}
+		}
+	}
+	
+	return final;
+	
+}
+void afnd_to_afd(AFnD afnd, TransicionesEP tep, list<char*> list, stack<char> pila)
+{
+	char * weaita1;
+	char * weaita2;
+	list.push_front(tep.getTransA());
+	list.push_front(tep.getTransB());
+
+	for (int i = 0; i < strlen(tep.getTransA()); ++i)
+	{
+		weaita1=clausuraEpsilon(afnd, tep.getTransA()[i], pila);
+		TransicionesEP tepaux = transicionEpsilon(weaita1, afnd);
+		afnd_to_afd(afnd, tepaux, list, pila);
+		
+	}
+
+	/*for (int i = 0; i < strlen(tep.getTransB()); ++i)
+	{
+		weaita1=clausuraEpsilon(afnd, tep.getTransB()[i], pila);
+		TransicionesEP tepaux = transicionEpsilon(weaita1, afnd);
+		afnd_to_afd(afnd, tepaux, list, pila);
+		
+	}*/
+
+	for (std::list<char*>::iterator it = list.begin(); it!=list.end(); ++it)
+	{
+		cout<<' '<<*it<<endl;
+	}
 
 }
+
+
