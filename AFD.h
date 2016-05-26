@@ -1,13 +1,22 @@
 #ifndef AFD_H
 #define AFD_H
-#include <vector>
 class AFD
 {
 	protected:
-		std::vector <std::vector <std::string> > matriz;
+		char** matrix;
+		int col;
+		int fil;
+		char est_inicial;
+		char est_final;
+
 	public:
 		AFD();
-
+		void imprimirAutomata();
+		void setTransicion(char** m);
+		void setInicioyFinal(char i, char f);
+		void setDimension(int a, int b);
+		int size_alphabet();
+		int size_states();
 };
 
 #endif
