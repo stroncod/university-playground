@@ -1,0 +1,4 @@
+Cadena concatenada:holachao 
+Comparador: a 
+Cambiador: ) 
+Cadena modificada: hol)ch)o 
