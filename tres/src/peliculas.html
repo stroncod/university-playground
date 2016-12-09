@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <title>Peliculas</title>
+        <script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
+        <link rel="stylesheet" href="css/jquery-ui.min.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    </head>
+<body>
+   <nav class="navbar navbar-inverse navbar-static-top logobarra">
+    <div class="container">
+      <div class="navbar-header">
+        
+        <a class="navbar-brand text-hide" href="#">Brand Text
+        </a>
+      </div>
+      
+    </div>
+    <!--/.container-fluid -->
+  </nav>
+    <form>
+        <label>
+            <div class="col-lg-6">  
+                <div class="input-group">
+                    <input type="text" class="form-control" name="pelicula" placeholder="Buscar por Titulo de la pelicula">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">Buscar</button>
+                    </span>   
+                </div>
+            </div>    
+        </label>
+    </form>
+
+   
+ <div id="container">
+<div class="panel panel-inverse">
+  <div class="panel-body">
+      <div class="media">
+  <div class="media-left media-middle">
+    <a href="#">
+      <span class="poster">Poster</span>
+    </a>
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading titulo">Titulo</h4>
+    <p class="actores">Actores</p>
+    <p class="director">Director</p>
+    <p class="duracion">Duracion</p>
+    <p class="trama">Trama</p>
+    <p class="ano">Año</p>
+  </div>
+</div>   
+
+  
+</div>
+  </div>
+</div>
+
+
+<script>
+    var $Form = $('form'),
+    $Container = $('#container');
+    $Container.hide();
+    $Form.on('submit', function(p_oEvent) {
+        var url, n_pelicula, info;
+        p_oEvent.preventDefault();
+        n_pelicula = $Form.find('input').val();
+        url = 'http://www.omdbapi.com/?t=' + n_pelicula + '&type=movie&tomatoes=true'
+        
+        $.ajax(url, {
+            complete: function(p_oXHR) {
+                info = $.parseJSON(p_oXHR.responseText);
+                $Container.find('.titulo').text(info.Title);
+                $Container.find(".actores").text('Actores: '+info.Actors);
+                $Container.find('.trama').text(info.Plot);
+                $Container.find('.poster').html('<img src="' + info.Poster + '"/>');
+                $Container.find('.ano').text(info.Year);
+                $Container.find('.duracion').text('Duracion: '+info.Runtime);
+                $Container.find('.director').text('Director: '+info.Director);
+                $Container.show();
+            }
+        });
+        
+    });
+    </script>
+    
+</body>
+</html>

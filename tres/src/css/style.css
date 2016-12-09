@@ -1,0 +1,33 @@
+.navbar-brand {
+  padding: 0px;
+}
+.navbar-brand>img {
+  height: 100%;
+  padding: 15px;
+  width: auto;
+}
+	@media only screen and (max-width : 768px){
+  .logobarra .navbar-brand {
+  padding: 0px;
+  transform: translateX(-50%);
+  left: 50%;
+  position: absolute;
+}
+.logobarra .navbar-brand>img {
+  height: 100%;
+  width: auto;
+  padding: 7px 14px; 
+}
+}
+
+.logobarra .navbar-brand {
+  background: url(http://i.imgur.com/dYUPVoV.png) center / contain no-repeat;
+  width: 200px;
+  transform: translateX(-50%);
+  left: 50%;
+  position: absolute;
+}
+body{
+    background-image: url('http://i.giphy.com/jNCT0DtwX6GFG.gif');
+    background-size: cover;
+}
